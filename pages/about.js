@@ -13,7 +13,7 @@ const About = () => {
       }}
     >
       <Typography variant="h1" component="h1">
-        ELEGANT DIFFERENTIATING DESIGN
+        About
       </Typography>
     </Box>
   );

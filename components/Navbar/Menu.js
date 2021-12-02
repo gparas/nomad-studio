@@ -14,10 +14,6 @@ import C from './constants';
 
 const Menu = ({ open, onClose }) => {
   const router = useRouter();
-  const handleClick = (e) => {
-    e.preventDefault();
-    onClose();
-  };
   return (
     <Drawer
       anchor="right"

@@ -16,6 +16,7 @@ const Navbar = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
     <>
       <AppBar color="transparent" elevation={0}>

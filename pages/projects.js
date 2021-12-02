@@ -13,7 +13,7 @@ const Projects = () => {
       }}
     >
       <Typography variant="h1" component="h1">
-        ELEGANT DIFFERENTIATING DESIGN
+        Projects
       </Typography>
     </Box>
   );
