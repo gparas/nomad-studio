@@ -1,40 +1,39 @@
 import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Flex, Box, Heading, Container, MenuButton, Close } from 'theme-ui';
 import Menu from './Menu';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const toggleMenu = () => {
+    setOpen(!open);
   };
 
   return (
     <>
-      <AppBar color="transparent" elevation={0}>
-        <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+      <Menu open={open} />
+      <Box
+        as="header"
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          zIndex: 'appBar',
+        }}
+      >
+        <Container>
+          <Heading as="h5" sx={{ flexGrow: 1 }}>
             Persistent drawer
-          </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="open menu"
-            onClick={handleDrawerOpen}
-            edge="end"
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Menu open={open} onClose={handleDrawerClose} />
+          </Heading>
+          {open ? (
+            <Close onClick={toggleMenu} />
+          ) : (
+            <MenuButton aria-label="Toggle Menu" onClick={toggleMenu} />
+          )}
+        </Container>
+      </Box>
     </>
   );
 };

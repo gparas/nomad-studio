@@ -1,21 +1,19 @@
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import { Heading, Flex } from 'theme-ui';
 
 const Contact = () => {
   return (
-    <Box
-      component="section"
+    <Flex
+      as="section"
       sx={{
         height: '100vh',
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <Typography variant="h1" component="h1">
+      <Heading variant="h1" component="h1">
         Contact
-      </Typography>
-    </Box>
+      </Heading>
+    </Flex>
   );
 };
 

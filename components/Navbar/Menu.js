@@ -1,61 +1,96 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import NextLink from 'next/link';
-import Toolbar from '@mui/material/Toolbar';
-import Drawer from '@mui/material/Drawer';
-import CloseIcon from '@mui/icons-material/Close';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link, Box } from 'theme-ui';
+import useArrayRef from '../../hooks/useArrayRef';
 import C from './constants';
 
-const Menu = ({ open, onClose }) => {
-  const router = useRouter();
+const Menu = ({ open }) => {
+  const boxRef = useRef(null);
+  const paperRef = useRef(null);
+  const linkRef = useRef([]);
+
+  useEffect(() => {
+    if (open) {
+      gsap
+        .timeline()
+        .to(boxRef.current, { duration: 0, css: { display: 'block' } })
+        .to(paperRef.current, {
+          duration: 0.8,
+          height: '100%',
+          ease: 'power3.inOut',
+        })
+        .from(linkRef.current, {
+          duration: 0.8,
+          y: 200,
+          ease: 'power3.inOut',
+          stagger: 0.3,
+        });
+    } else if (!open) {
+      gsap.to(paperRef.current, {
+        duration: 0.8,
+        height: 0,
+        ease: 'power3.inOut',
+      });
+      gsap.to(boxRef.current, { duration: 0, css: { display: 'none' } });
+    }
+  }, [open]);
+
   return (
-    <Drawer
-      anchor="right"
-      open={open}
-      transitionDuration={400}
-      PaperProps={{
-        sx: { width: '100%' },
+    <Box
+      ref={boxRef}
+      sx={{
+        display: 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 'drawer',
       }}
     >
-      <Toolbar>
-        <IconButton
-          onClick={onClose}
-          color="inherit"
-          aria-label="close menu"
-          edge="end"
-          size="large"
-          sx={{ marginLeft: 'auto' }}
-        >
-          <CloseIcon fontSize="inherit" />
-        </IconButton>
-      </Toolbar>
-      <List>
-        {C.LINKS.map((link) => (
-          <NextLink key={link.label} href={link.href} passHref>
-            <ListItem button component="a" onClick={onClose}>
-              {router.pathname === link.href ? (
-                <ListItemIcon>
-                  <ArrowForwardIcon fontSize="large" />
-                </ListItemIcon>
-              ) : null}
-              <ListItemText
-                primary={link.label}
-                primaryTypographyProps={{
-                  variant: 'h2',
-                  sx: { fontWeight: 'regular' },
-                }}
-              />
-            </ListItem>
-          </NextLink>
-        ))}
-      </List>
-    </Drawer>
+      <Box
+        ref={paperRef}
+        sx={{
+          px: 3,
+          height: 0,
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: 'muted',
+        }}
+      >
+        <Box as="ul">
+          {C.LINKS.map((link, index) => (
+            <Box
+              key={link.label}
+              as="li"
+              sx={{
+                display: 'block',
+                position: 'relative',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                mb: 3,
+              }}
+            >
+              <NextLink href={link.href} passHref>
+                <Link
+                  sx={{
+                    fontSize: 7,
+                    display: 'inline-block',
+                    lineHeight: 1,
+                    textTransform: 'uppercase',
+                  }}
+                  ref={(el) => (linkRef.current[index] = el)}
+                >
+                  {link.label}
+                </Link>
+              </NextLink>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
