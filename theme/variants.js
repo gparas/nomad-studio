@@ -9,10 +9,7 @@ export default {
     },
   },
   buttons: {
-    close: {
-      cursor: 'pointer',
-    },
-    menu: {
+    icon: {
       cursor: 'pointer',
     },
   },

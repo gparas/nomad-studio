@@ -1,0 +1,42 @@
+.menu-button__icon {
+  display: block;
+  position: relative;
+  overflow: visible;
+}
+
+.menu-button__icon span,
+.menu-button__icon::before,
+.menu-button__icon::after {
+  display: block;
+  width: 2rem;
+  height: 4px;
+  background-color: black;
+}
+
+.menu-button__icon::before,
+.menu-button__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -8px;
+  transition: transform 200ms;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.menu-button__icon::after {
+  bottom: -8px;
+  top: auto;
+}
+
+.menu-button__icon.is-active > span {
+  opacity: 0;
+}
+
+.menu-button__icon.is-active::before {
+  transform: translate3d(0, 8px, 0) rotate(45deg);
+}
+
+.menu-button__icon.is-active::after {
+  transform: translate3d(0, -8px, 0) rotate(-45deg);
+}

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import NextLink from 'next/link';
 import { Link, Box } from 'theme-ui';
-import useArrayRef from '../../hooks/useArrayRef';
 import C from './constants';
 
 const Menu = ({ open }) => {
@@ -20,19 +19,33 @@ const Menu = ({ open }) => {
           height: '100%',
           ease: 'power3.inOut',
         })
-        .from(linkRef.current, {
+        .to(linkRef.current, {
+          duration: 0.8,
+          y: 0,
+          delay: 0.1,
+          ease: 'expo.out',
+          stagger: {
+            amount: 0.3,
+          },
+          clearProps: 'transform',
+        });
+    } else if (!open) {
+      gsap
+        .timeline()
+        .to(linkRef.current, {
           duration: 0.8,
           y: 200,
           ease: 'power3.inOut',
-          stagger: 0.3,
-        });
-    } else if (!open) {
-      gsap.to(paperRef.current, {
-        duration: 0.8,
-        height: 0,
-        ease: 'power3.inOut',
-      });
-      gsap.to(boxRef.current, { duration: 0, css: { display: 'none' } });
+          stagger: {
+            amount: 0.3,
+          },
+        })
+        .to(paperRef.current, {
+          duration: 0.8,
+          height: 0,
+          ease: 'power3.inOut',
+        })
+        .to(boxRef.current, { duration: 0, css: { display: 'none' } });
     }
   }, [open]);
 
@@ -76,7 +89,7 @@ const Menu = ({ open }) => {
               <NextLink href={link.href} passHref>
                 <Link
                   sx={{
-                    fontSize: 7,
+                    fontSize: 8,
                     display: 'inline-block',
                     lineHeight: 1,
                     textTransform: 'uppercase',

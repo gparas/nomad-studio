@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Flex, Box, Heading, Container, MenuButton, Close } from 'theme-ui';
+import { Box, Heading, Container, IconButton } from 'theme-ui';
 import Menu from './Menu';
+import MenuIcon from './MenuIcon';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -27,11 +28,9 @@ const Navbar = () => {
           <Heading as="h5" sx={{ flexGrow: 1 }}>
             Persistent drawer
           </Heading>
-          {open ? (
-            <Close onClick={toggleMenu} />
-          ) : (
-            <MenuButton aria-label="Toggle Menu" onClick={toggleMenu} />
-          )}
+          <IconButton onClick={toggleMenu}>
+            <MenuIcon isActive={open} />
+          </IconButton>
         </Container>
       </Box>
     </>
