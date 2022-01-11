@@ -1,11 +1,8 @@
 export default {
   layout: {
     container: {
-      display: 'flex',
-      flexWrap: 'inherit',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      px: 3,
+      position: 'relative',
+      px: [3, 4],
     },
   },
   buttons: {

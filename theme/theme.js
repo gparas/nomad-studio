@@ -2,14 +2,16 @@ import space from './space';
 import typography from './typography';
 import colors from './colors';
 import styles from './styles';
-import zIndices from './zIndices';
+import sizes from './sizes';
 import variants from './variants';
+import zIndices from './zIndices';
 
 export default {
   space,
   colors,
   styles,
+  sizes,
   zIndices,
-  ...variants,
   ...typography,
+  ...variants,
 };

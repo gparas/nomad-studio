@@ -33,6 +33,7 @@ const childrenVariants = {
 
 const NavList = ({ toggleMenuOpen }) => {
   const MotionList = motion(Box);
+  const MotionListItem = motion(Box);
   const MotionLink = motion(Link);
   return (
     <MotionList
@@ -41,7 +42,12 @@ const NavList = ({ toggleMenuOpen }) => {
       variants={parentVariants}
     >
       {C.LINKS.map((link) => (
-        <MotionList key={link.label} as="li" sx={{ overflow: 'hidden' }}>
+        <MotionListItem
+          key={link.label}
+          as="li"
+          mb={2}
+          sx={{ overflow: 'hidden' }}
+        >
           <NextLink href={link.href} passHref>
             <MotionLink
               onClick={toggleMenuOpen}
@@ -56,7 +62,7 @@ const NavList = ({ toggleMenuOpen }) => {
               {link.label}
             </MotionLink>
           </NextLink>
-        </MotionList>
+        </MotionListItem>
       ))}
     </MotionList>
   );
