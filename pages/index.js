@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Flex, Box } from 'theme-ui';
+import NextLink from 'next/link';
+import { Flex, Box, Link, Divider } from 'theme-ui';
 import { motion, AnimatePresence } from 'framer-motion';
 import { List } from '../components';
 const navRoutes = [
@@ -34,10 +35,12 @@ const Home = () => {
     video: '',
     key: '0',
   });
+  const [linkHover, setLinkHover] = useState(false);
   return (
     <Box
       as="section"
-      ml={[4, 160]}
+      ml={[4, 144]}
+      py={48}
       sx={{
         display: 'flex',
         flexBasis: 0,
@@ -55,7 +58,6 @@ const Home = () => {
             flexBasis: 0,
             flexGrow: 1,
             maxWidth: '100%',
-            alignItems: 'center',
           }}
         >
           <List>
@@ -77,7 +79,12 @@ const Home = () => {
                   })
                 }
               >
-                {route.title}
+                <NextLink href={route.path} passHref>
+                  <Link sx={{ fontSize: 6 }}>
+                    {route.title}{' '}
+                    <Box sx={{ width: 80, height: 2, bg: 'currentcolor' }} />
+                  </Link>
+                </NextLink>
               </motion.li>
             ))}
           </List>
