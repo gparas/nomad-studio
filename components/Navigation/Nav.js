@@ -36,8 +36,10 @@ const Nav = ({ isMenuOpen, children }) => {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: '#ea281e',
+            backgroundColor: '#fff6ef',
             zIndex: 'drawer',
+            display: 'flex',
+            alignItems: 'center',
           }}
           initial="closed"
           exit="closed"

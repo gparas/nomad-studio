@@ -45,7 +45,7 @@ const NavList = ({ toggleMenuOpen }) => {
         <MotionListItem
           key={link.label}
           as="li"
-          mb={2}
+          mb={3}
           sx={{ overflow: 'hidden' }}
         >
           <NextLink href={link.href} passHref>

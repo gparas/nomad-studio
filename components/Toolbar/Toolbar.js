@@ -8,7 +8,7 @@ const Toolbar = ({ component = 'div', ...other }) => (
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      minHeight: [56, 64, 96],
+      minHeight: [56, 64, 80],
     }}
     {...other}
   />

@@ -15,8 +15,14 @@ const Header = ({ isMenuOpen, toggleMenuOpen }) => {
             maxWidth: '100%',
           }}
         >
-          <Heading as="h3" sx={{ flexGrow: 1 }}>
-            Persistent drawer
+          <Heading
+            as="h3"
+            sx={{
+              flexGrow: 1,
+              letterSpacing: 1,
+            }}
+          >
+            NOMAD STUDIO
           </Heading>
           <MenuToggle isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
         </Container>
