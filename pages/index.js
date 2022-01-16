@@ -1,40 +1,7 @@
-import { useState, useEffect } from 'react';
-import NextLink from 'next/link';
-import Image from 'next/image';
 import { Heading, Box, Container, Text, Flex } from 'theme-ui';
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-  AnimatePresence,
-} from 'framer-motion';
-import { List } from '../components';
-const navRoutes = [
-  {
-    id: 0,
-    title: 'Knit-Wit',
-    path: '/not-humble',
-    video: 'make-it-zero.mp4',
-  },
-  {
-    id: 1,
-    title: 'Fiber',
-    path: '/bleeping-easy',
-    video: 'easy.mp4',
-  },
-  {
-    id: 2,
-    title: 'Soft Edge',
-    path: '/make-it-zero',
-    video: 'make-it-zero.mp4',
-  },
-  {
-    id: 3,
-    title: 'Dancing',
-    path: '/it-takes-an-island',
-    video: 'easy.mp4',
-  },
-];
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import { ProjectsList } from '../components';
+
 const Home = () => {
   const MotionBox = motion(Box);
   const { scrollYProgress } = useViewportScroll();
@@ -100,6 +67,7 @@ const Home = () => {
           </Heading>
         </Container>
       </Box>
+      <ProjectsList />
     </>
   );
 };
