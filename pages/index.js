@@ -1,20 +1,32 @@
+import { useEffect } from 'react';
 import { Heading, Box, Container, Text, Flex } from 'theme-ui';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import { ProjectsList } from '../components';
 
 const Home = () => {
-  const MotionBox = motion(Box);
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 0.6], [1, 3]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.08]);
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0.1, 0.4],
-    ['#fff', '#000'],
-  );
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.2]);
+
+  const listenScrollEvent = () => {
+    if (window.scrollY > 400) {
+      document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white';
+    } else {
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenScrollEvent);
+
+    return () => window.removeEventListener('scroll', listenScrollEvent);
+  }, []);
+
   return (
     <>
-      <MotionBox as="section" pt={104} pb={104} style={{ backgroundColor }}>
+      <Box as="section" pt={104}>
         <Container>
           <Heading
             as="h1"
@@ -41,24 +53,29 @@ const Home = () => {
           </Text>
           <Flex sx={{ justifyContent: 'center' }}>
             <motion.img
-              width={595}
               height={723}
-              src="/projects/stefanos/1.png"
+              src="/main-screen.jpg"
               alt="main-screen"
-              style={{ scale, opacity, objectFit: 'cover' }}
+              style={{
+                scale,
+                opacity,
+                width: '40vw',
+                objectFit: 'cover',
+              }}
             />
           </Flex>
         </Container>
-      </MotionBox>
-      <Box as="section" pb={188} sx={{ backgroundColor: '#000' }}>
+      </Box>
+      <Box as="section">
         <Container>
+          <Box sx={{ width: '30%', display: 'inline-block' }} />
           <Heading
             as="h2"
             sx={{
+              display: 'inline',
               fontSize: [7, 9],
               fontFamily: 'serif',
               fontWeight: 400,
-              textAlign: 'center',
               color: '#fff',
             }}
           >

@@ -74,7 +74,9 @@ const ProjectsList = () => {
                 onMouseLeave={projectLeave}
               >
                 <NextLink href={project.path} passHref>
-                  <Link sx={{ fontSize: 8 }}>{project.title}</Link>
+                  <Link sx={{ fontSize: 8, display: 'block' }}>
+                    {project.title}
+                  </Link>
                 </NextLink>
               </motion.li>
             );

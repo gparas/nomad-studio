@@ -24,7 +24,7 @@ const Path = ({ isMenuOpen, ...other }) => {
       fill="none"
       strokeWidth="2"
       strokeMiterlimit="10"
-      stroke="#000"
+      stroke={isMenuOpen ? 'black' : 'currentColor'}
       strokeLinecap="round"
       initial="close"
       animate={isMenuOpen ? 'open' : 'close'}
