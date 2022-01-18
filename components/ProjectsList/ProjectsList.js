@@ -1,17 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, Fragment } from 'react';
+import useMouse from '@react-hook/mouse-position';
 import NextLink from 'next/link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import useMouse from '@react-hook/mouse-position';
-import { motion } from 'framer-motion';
+import Divider from '@mui/material/Divider';
+import Cursor from './Cursor';
 import C from './constants';
+import U from './utils';
 
 const ProjectsList = () => {
   const [cursor, setCursor] = useState({
+    id: '',
     img: '',
     variant: 'default',
   });
@@ -33,64 +34,53 @@ const ProjectsList = () => {
     mouseYPosition = mouse.clientY;
   }
 
-  const projectEnter = (img) => {
+  const projectEnter = (project) => {
     setCursor({
-      img,
+      id: project.id,
+      img: project.img,
       variant: 'project',
     });
   };
 
   const projectLeave = () => {
     setCursor({
+      id: '',
       img: '',
       variant: 'default',
     });
   };
 
   return (
-    <Box as="section" py={13} ref={ref}>
-      <motion.div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-        }}
-        variants={C.VARIANTS}
-        animate={cursor.variant}
-        transition={C.SPRING}
-        custom={{ mouseXPosition, mouseYPosition }}
-      >
-        <motion.img
-          width="300"
-          height="300"
-          alt="foo"
-          src={cursor.img}
-          style={{ objectFit: 'cover' }}
-        />
-      </motion.div>
-      <Container>
-        <List component="nav">
-          {C.PROJECTS.map((project) => {
-            return (
-              <ListItem key={project.id} component="div" disableGutters>
+    <div ref={ref}>
+      <Cursor
+        cursor={cursor}
+        mouseXPosition={mouseXPosition}
+        mouseYPosition={mouseYPosition}
+      />
+      <List component="nav">
+        {C.PROJECTS.map((project, i) => {
+          return (
+            <Fragment key={project.id}>
+              <ListItem component="div" disableGutters>
                 <NextLink href={project.path} passHref>
                   <ListItemButton
                     component="a"
-                    onMouseEnter={() => projectEnter(project.img)}
+                    onMouseEnter={() => projectEnter(project)}
                     onMouseLeave={projectLeave}
                   >
                     <ListItemText
-                      primary={project.title}
+                      primary={`${U.pad(i + 1)}. ${project.title}`}
                       primaryTypographyProps={{ variant: 'h3' }}
                     />
                   </ListItemButton>
                 </NextLink>
               </ListItem>
-            );
-          })}
-        </List>
-      </Container>
-    </Box>
+              <Divider />
+            </Fragment>
+          );
+        })}
+      </List>
+    </div>
   );
 };
 
