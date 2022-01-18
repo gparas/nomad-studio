@@ -1,7 +1,7 @@
 import { useCycle } from 'framer-motion';
-import { Box } from 'theme-ui';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
 import Header from '../Header';
-import Toolbar from '../Toolbar';
 import Navigation from '../Navigation';
 
 const Layout = ({ children }) => {

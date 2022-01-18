@@ -1,9 +1,13 @@
 import React, { useState, useRef } from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Link, Divider } from 'theme-ui';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import useMouse from '@react-hook/mouse-position';
 import { motion } from 'framer-motion';
-import List from '../List';
 import C from './constants';
 
 const ProjectsList = () => {
@@ -44,7 +48,7 @@ const ProjectsList = () => {
   };
 
   return (
-    <Box as="section" py={100} ref={ref}>
+    <Box as="section" py={13} ref={ref}>
       <motion.div
         style={{
           position: 'fixed',
@@ -65,20 +69,23 @@ const ProjectsList = () => {
         />
       </motion.div>
       <Container>
-        <List>
+        <List component="nav">
           {C.PROJECTS.map((project) => {
             return (
-              <motion.li
-                key={project.id}
-                onMouseEnter={() => projectEnter(project.img)}
-                onMouseLeave={projectLeave}
-              >
+              <ListItem key={project.id} component="div" disableGutters>
                 <NextLink href={project.path} passHref>
-                  <Link sx={{ fontSize: 8, display: 'block' }}>
-                    {project.title}
-                  </Link>
+                  <ListItemButton
+                    component="a"
+                    onMouseEnter={() => projectEnter(project.img)}
+                    onMouseLeave={projectLeave}
+                  >
+                    <ListItemText
+                      primary={project.title}
+                      primaryTypographyProps={{ variant: 'h3' }}
+                    />
+                  </ListItemButton>
                 </NextLink>
-              </motion.li>
+              </ListItem>
             );
           })}
         </List>

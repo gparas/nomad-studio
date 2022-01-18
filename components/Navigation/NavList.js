@@ -1,7 +1,10 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { motion } from 'framer-motion';
-import { Box, Link } from 'theme-ui';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import C from './constants';
 
 const parentVariants = {
@@ -32,37 +35,35 @@ const childrenVariants = {
 };
 
 const NavList = ({ toggleMenuOpen }) => {
-  const MotionList = motion(Box);
-  const MotionListItem = motion(Box);
-  const MotionLink = motion(Link);
+  const MotionList = motion(List);
+  const MotionLink = motion(ListItemButton);
   return (
     <MotionList
-      as="ul"
-      sx={{ margin: 0, padding: 0, listStyle: 'none' }}
+      component="nav"
+      initial="closed"
+      animate="open"
       variants={parentVariants}
     >
       {C.LINKS.map((link) => (
-        <MotionListItem
+        <ListItem
           key={link.label}
-          as="li"
-          mb={3}
+          component="div"
           sx={{ overflow: 'hidden' }}
+          disableGutters
         >
           <NextLink href={link.href} passHref>
             <MotionLink
+              component="a"
               onClick={toggleMenuOpen}
               variants={childrenVariants}
-              sx={{
-                display: 'inline-block',
-                fontSize: 8,
-                lineHeight: 1,
-                textTransform: 'uppercase',
-              }}
             >
-              {link.label}
+              <ListItemText
+                primary={link.label}
+                primaryTypographyProps={{ variant: 'h3' }}
+              />
             </MotionLink>
           </NextLink>
-        </MotionListItem>
+        </ListItem>
       ))}
     </MotionList>
   );

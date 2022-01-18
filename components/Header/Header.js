@@ -1,33 +1,23 @@
 import React from 'react';
-import { Container, Heading } from 'theme-ui';
-import Toolbar from '../../components/Toolbar';
-import HeaderNav from './HeaderNav';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import MenuToggle from './MenuToggle';
 
 const Header = ({ isMenuOpen, toggleMenuOpen }) => {
   return (
-    <HeaderNav>
+    <AppBar
+      color="transparent"
+      elevation={0}
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    >
       <Toolbar>
-        <Container
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            maxWidth: '100%',
-          }}
-        >
-          <Heading
-            as="h3"
-            sx={{
-              flexGrow: 1,
-              letterSpacing: 1,
-            }}
-          >
-            NOMAD STUDIO
-          </Heading>
-          <MenuToggle isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
-        </Container>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          NOMAD STUDIO
+        </Typography>
+        <MenuToggle isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
       </Toolbar>
-    </HeaderNav>
+    </AppBar>
   );
 };
 

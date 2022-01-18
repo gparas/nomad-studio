@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconButton } from 'theme-ui';
 import { motion } from 'framer-motion';
+import IconButton from '@mui/material/IconButton';
 
 const variants = {
   open: (custom) => ({
@@ -37,7 +37,7 @@ const Path = ({ isMenuOpen, ...other }) => {
 
 const MenuIcon = ({ isMenuOpen, toggleMenuOpen }) => {
   return (
-    <IconButton onClick={() => toggleMenuOpen()} sx={{ width: 48, height: 48 }}>
+    <IconButton onClick={() => toggleMenuOpen()} edge="end">
       <svg width="32" height="32" viewBox="0 0 32 32">
         <Path
           d="M2 9, L30, 9"

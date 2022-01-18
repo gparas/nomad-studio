@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
-import { Heading, Box, Container, Text, Flex } from 'theme-ui';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
 import { ProjectsList } from '../components';
 
 const Home = () => {
+  const MotionImage = motion(CardMedia);
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 0.6], [1, 3]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.2]);
@@ -26,62 +30,36 @@ const Home = () => {
 
   return (
     <>
-      <Box as="section" pt={104}>
+      <Box component="section" pt={13}>
         <Container>
-          <Heading
-            as="h1"
-            mb={4}
-            sx={{
-              fontSize: 10,
-              fontFamily: 'serif',
-              fontWeight: 400,
-              textAlign: 'center',
-            }}
-          >
+          <Typography variant="h1" mb={4} align="center">
             NOMAD STUDIO
-          </Heading>
-          <Text
-            as="p"
-            sx={{
-              fontSize: 4,
-              textAlign: 'center',
-              mb: 152,
-              letterSpacing: 1,
-            }}
-          >
+          </Typography>
+          <Typography variant="subtitle1" align="center" mb={19}>
             LANDSCAPE, INTERIOR & EXTERIOR
-          </Text>
-          <Flex sx={{ justifyContent: 'center' }}>
-            <motion.img
-              height={723}
-              src="/main-screen.jpg"
-              alt="main-screen"
-              style={{
-                scale,
-                opacity,
-                width: '40vw',
-                objectFit: 'cover',
-              }}
-            />
-          </Flex>
+          </Typography>
+          <MotionImage
+            src="/main-screen.jpg"
+            alt="main-screen"
+            component="img"
+            height={723}
+            sx={{ width: '40vw', margin: '0 auto' }}
+            style={{ scale, opacity }}
+          />
         </Container>
       </Box>
-      <Box as="section">
+      <Box component="section">
         <Container>
           <Box sx={{ width: '30%', display: 'inline-block' }} />
-          <Heading
-            as="h2"
+          <Typography
+            variant="h2"
             sx={{
               display: 'inline',
-              fontSize: [7, 9],
-              fontFamily: 'serif',
-              fontWeight: 400,
-              color: '#fff',
             }}
           >
             We create architectural experiences — informed by tradition and
             inspired by contemporary life.
-          </Heading>
+          </Typography>
         </Container>
       </Box>
       <ProjectsList />
