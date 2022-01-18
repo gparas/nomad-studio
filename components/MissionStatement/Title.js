@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 const Title = () => {
   return (
     <Box mb={[8, 15]}>
-      <div style={{ width: '30%', display: 'inline-block' }} />
+      <Box sx={{ width: '30%', display: { xs: 'none', md: 'inline-block' } }} />
       <Typography
         variant="h2"
         fontFamily="fontFamilySerif"
