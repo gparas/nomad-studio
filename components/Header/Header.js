@@ -1,27 +1,33 @@
 import React from 'react';
-import { Container, Heading } from 'theme-ui';
-import Toolbar from '../../components/Toolbar';
-import HeaderNav from './HeaderNav';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Slide from '@mui/material/Slide';
 import MenuToggle from './MenuToggle';
 
 const Header = ({ isMenuOpen, toggleMenuOpen }) => {
+  const trigger = useScrollTrigger();
   return (
-    <HeaderNav>
-      <Toolbar>
-        <Container
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            maxWidth: '100%',
-          }}
-        >
-          <Heading as="h3" sx={{ flexGrow: 1 }}>
-            Persistent drawer
-          </Heading>
+    <Slide appear={false} direction="down" in={!trigger}>
+      <AppBar
+        elevation={0}
+        color="inherit"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
+        <Toolbar>
+          <Typography
+            variant="h6"
+            component="div"
+            color="textPrimary"
+            sx={{ flexGrow: 1 }}
+          >
+            NOMAD STUDIO
+          </Typography>
           <MenuToggle isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
-        </Container>
-      </Toolbar>
-    </HeaderNav>
+        </Toolbar>
+      </AppBar>
+    </Slide>
   );
 };
 

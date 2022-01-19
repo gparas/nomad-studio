@@ -1,20 +1,7 @@
-import { Heading, Flex } from 'theme-ui';
+import Typography from '@mui/material/Typography';
 
 const Projects = () => {
-  return (
-    <Flex
-      as="section"
-      sx={{
-        height: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Heading variant="h1" component="h1">
-        Projects
-      </Heading>
-    </Flex>
-  );
+  return <Typography variant="h1">Projects</Typography>;
 };
 
 export default Projects;

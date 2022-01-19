@@ -1,17 +1,21 @@
-import space from './space';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import typography from './typography';
-import colors from './colors';
-import styles from './styles';
-import sizes from './sizes';
-import variants from './variants';
-import zIndices from './zIndices';
 
-export default {
-  space,
-  colors,
-  styles,
-  sizes,
-  zIndices,
-  ...typography,
-  ...variants,
-};
+let theme = createTheme({
+  typography,
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+  },
+});
+
+theme = responsiveFontSizes(theme);
+
+if (typeof window !== 'undefined') {
+  window.theme = theme;
+}
+
+export default theme;
