@@ -4,9 +4,21 @@ import typography from './typography';
 let theme = createTheme({
   typography,
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        a: {
+          textDecoration: 'none',
+        },
+      },
+    },
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
+      },
+    },
+    MuiLink: {
+      defaultProps: {
+        underline: 'none',
       },
     },
   },

@@ -1,13 +1,17 @@
 import React from 'react';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
-import MenuToggle from './MenuToggle';
+import Link from './Link';
+import C from './constants';
 
-const Header = ({ isMenuOpen, toggleMenuOpen }) => {
+const Header = () => {
   const trigger = useScrollTrigger();
+  const router = useRouter();
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar
@@ -16,15 +20,27 @@ const Header = ({ isMenuOpen, toggleMenuOpen }) => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            color="textPrimary"
-            sx={{ flexGrow: 1 }}
-          >
-            NOMAD STUDIO
-          </Typography>
-          <MenuToggle isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
+          <NextLink href="/" passHref>
+            <Typography
+              component="a"
+              variant="h6"
+              color="inherit"
+              sx={{ flexGrow: 1 }}
+            >
+              NOMAD STUDIO
+            </Typography>
+          </NextLink>
+          {C.LINKS.map((link) => (
+            <NextLink href={link.href} passHref key={link.label}>
+              <Link
+                component="a"
+                color="inherit"
+                className={router.pathname === link.href ? 'active' : ''}
+              >
+                {link.label}
+              </Link>
+            </NextLink>
+          ))}
         </Toolbar>
       </AppBar>
     </Slide>

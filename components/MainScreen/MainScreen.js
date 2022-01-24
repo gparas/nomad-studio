@@ -23,7 +23,7 @@ const MainScreen = () => {
         LANDSCAPE, INTERIOR & EXTERIOR
       </Typography>
       <MotionMedia
-        image="/main-screen.jpg"
+        image="/main-screen.png"
         alt="main-screen"
         sx={{
           width: ['80vw', '40vw'],

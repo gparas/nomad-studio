@@ -11,22 +11,23 @@ const Layout = ({ children }) => {
     <>
       <Header isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
       <Navigation isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
-      <Box
-        as="main"
+      <main
         id="main"
-        sx={{
+        style={{
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
           zIndex: 2,
           backgroundColor: '#fff',
           marginBottom: '100vh',
+          minHeight: '100vh',
           transition: 'all 500ms linear',
+          overflowX: 'hidden',
         }}
       >
         <Toolbar />
         {children}
-      </Box>
+      </main>
       <Footer />
     </>
   );
