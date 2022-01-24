@@ -35,7 +35,7 @@ const Header = () => {
               <Link
                 component="a"
                 color="inherit"
-                className={router.pathname === link.href ? 'active' : ''}
+                className={router.pathname.includes(link.href) ? 'active' : ''}
               >
                 {link.label}
               </Link>

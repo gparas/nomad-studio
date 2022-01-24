@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CardMedia from '@mui/material/CardMedia';
+import Image from 'next/image';
 import SliderWrapper from './SliderWrapper';
 import Slide from './Slide';
 import { slideSize } from './constants';
@@ -46,10 +46,12 @@ const Slider = ({ slides }) => {
             current={current}
             index={index}
           >
-            <CardMedia
+            <Image
               alt={headline}
-              image={src}
-              sx={{ width: '100%', height: '100%' }}
+              src={src}
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
             />
           </Slide>
         ))}

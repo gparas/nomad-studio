@@ -6,7 +6,7 @@ const Slide = ({ current, index, ...other }) => {
   return (
     <motion.div
       style={{
-        flex: 1,
+        flex: '1 1 0%',
         // margin: `0 ${slideMargin}`,
         position: 'relative',
         height: slideSize,
