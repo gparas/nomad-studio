@@ -1,5 +1,5 @@
-import React, { useState, useRef, Fragment } from 'react';
-import useMouse from '@react-hook/mouse-position';
+import React, { useState, Fragment, useEffect } from 'react';
+import { useMotionValue } from 'framer-motion';
 import NextLink from 'next/link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -11,34 +11,30 @@ import C from './constants';
 import U from './utils';
 
 const ProjectsList = () => {
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
   const [cursor, setCursor] = useState({
     id: '',
     img: '',
-    variant: 'default',
   });
 
-  const ref = useRef(null);
-  const mouse = useMouse(ref, {
-    enterDelay: 100,
-    leaveDelay: 100,
-  });
+  useEffect(() => {
+    const moveCursor = (e) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
+    };
 
-  let mouseXPosition = 0;
-  let mouseYPosition = 0;
+    window.addEventListener('mousemove', moveCursor);
 
-  if (mouse.x !== null) {
-    mouseXPosition = mouse.clientX;
-  }
-
-  if (mouse.y !== null) {
-    mouseYPosition = mouse.clientY;
-  }
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+    };
+  }, []);
 
   const projectEnter = (project) => {
     setCursor({
       id: project.id,
       img: project.img,
-      variant: 'project',
     });
   };
 
@@ -46,16 +42,15 @@ const ProjectsList = () => {
     setCursor({
       id: '',
       img: '',
-      variant: 'default',
     });
   };
 
   return (
-    <div ref={ref}>
+    <>
       <Cursor
         cursor={cursor}
-        mouseXPosition={mouseXPosition}
-        mouseYPosition={mouseYPosition}
+        mouseXPosition={cursorX}
+        mouseYPosition={cursorY}
       />
       <List component="nav">
         {C.PROJECTS.map((project, i) => {
@@ -80,7 +75,7 @@ const ProjectsList = () => {
           );
         })}
       </List>
-    </div>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import C from './constants';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Cursor = ({ cursor, mouseXPosition, mouseYPosition }) => {
   return (
@@ -9,19 +8,30 @@ const Cursor = ({ cursor, mouseXPosition, mouseYPosition }) => {
         position: 'fixed',
         top: 0,
         left: 0,
+        translateX: mouseXPosition,
+        translateY: mouseYPosition,
       }}
-      animate={cursor.variant}
-      variants={C.VARIANTS}
-      transition={C.SPRING}
-      custom={{ mouseXPosition, mouseYPosition }}
     >
-      <motion.img
-        width="300"
-        height="300"
-        alt="foo"
-        src={cursor.img}
-        style={{ objectFit: 'cover' }}
-      />
+      <AnimatePresence>
+        {cursor.img && (
+          <motion.img
+            width="300"
+            height="300"
+            alt="cursor"
+            src={cursor.img}
+            style={{
+              objectFit: 'cover',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}
+            initial={{ opacity: 0, scale: 0.4 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ ease: 'easeInOut', duration: 0.3 }}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { ProjectCard } from '../../components';
-import { server } from '../../config/index';
+import server from '../../lib/server';
 
 const Projects = ({ data }) => {
   if (!data) return <Container>Loading...</Container>;

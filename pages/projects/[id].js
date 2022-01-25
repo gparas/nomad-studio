@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { server } from '../../config/index';
+import server from '../../lib/server';
 
 const Project = ({ data }) => {
   const MotionTypography = motion(Typography);
