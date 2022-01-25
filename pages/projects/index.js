@@ -4,11 +4,9 @@ import Grid from '@mui/material/Grid';
 import useSWR from 'swr';
 import { ProjectCard } from '../../components';
 import fetcher from '../../lib/fetcher';
+import { server } from '../../config/index';
 
-const Projects = () => {
-  const { data, error } = useSWR(() => '/api', fetcher);
-
-  if (error) return <Container>{error.message}</Container>;
+const Projects = ({ data }) => {
   if (!data) return <Container>Loading...</Container>;
   return (
     <Box sx={{ py: [4, 24, 40] }}>
@@ -39,15 +37,17 @@ const Projects = () => {
   );
 };
 
-// export async function getStaticProps() {
-//   const res = await fetch(`${server}/api`);
-//   const projects = await res.json();
+export async function getStaticProps() {
+  try {
+    const res = await fetch(`${server}/api`);
+    const data = await res.json();
 
-//   return {
-//     props: {
-//       projects,
-//     },
-//   };
-// }
+    return {
+      props: { data },
+    };
+  } catch (error) {
+    console.error('Error fetching homepage data', error);
+  }
+}
 
 export default Projects;
