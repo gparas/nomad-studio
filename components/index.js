@@ -4,3 +4,4 @@ export { default as MissionStatement } from './MissionStatement';
 export { default as ProjectsList } from './ProjectsList';
 export { default as Section } from './Section';
 export { default as Slider } from './Slider';
+export { default as ProjectCard } from './ProjectCard';
