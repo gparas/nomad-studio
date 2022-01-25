@@ -31,6 +31,7 @@ const slides = [
 ];
 
 const About = () => {
+  console.log(process.env.NODE_ENV);
   return <Slider slides={slides} />;
 };
 
