@@ -1,9 +1,7 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import useSWR from 'swr';
 import { ProjectCard } from '../../components';
-import fetcher from '../../lib/fetcher';
 import { server } from '../../config/index';
 
 const Projects = ({ data }) => {
@@ -46,7 +44,7 @@ export async function getStaticProps() {
       props: { data },
     };
   } catch (error) {
-    console.error('Error fetching homepage data', error);
+    console.error('Error fetching data', error);
   }
 }
 

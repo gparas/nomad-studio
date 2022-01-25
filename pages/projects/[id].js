@@ -2,21 +2,17 @@ import React from 'react';
 import { useRouter } from 'next/router';
 // import Image from 'next/image';
 import NextLink from 'next/link';
-import useSWR from 'swr';
 import { motion, AnimatePresence } from 'framer-motion';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import fetcher from '../../lib/fetcher';
+import { server } from '../../config/index';
 
-const Project = () => {
-  const { query } = useRouter();
-  const { data, error } = useSWR(() => query.id && `/api/${query.id}`, fetcher);
+const Project = ({ data }) => {
   const MotionTypography = motion(Typography);
   const MotionMedia = motion(CardMedia);
 
-  if (error) return <Container>{error.message}</Container>;
   if (!data) return <Container>Loading...</Container>;
   return (
     <AnimatePresence>
@@ -44,16 +40,34 @@ const Project = () => {
   );
 };
 
-// export async function getServerSideProps(context) {
-//   const { id } = context.params;
-//   const res = await fetch(`${server}/api/${id}`);
-//   const project = await res.json();
+export async function getStaticProps({ params: { id } }) {
+  try {
+    const res = await fetch(`${server}/api/${id}`);
+    const data = await res.json();
 
-//   return {
-//     props: {
-//       project,
-//     },
-//   };
-// }
+    return {
+      props: { data },
+    };
+  } catch (error) {
+    console.error('Error fetching data', error);
+
+    // Fallback to 404 page in case of error
+    return { notFound: true };
+  }
+}
+
+export async function getStaticPaths() {
+  try {
+    const res = await fetch(`${server}/api`);
+    const data = await res.json();
+
+    return {
+      paths: data.map((item) => `/projects/${item.id}`),
+      fallback: true,
+    };
+  } catch (error) {
+    console.error('Error fetching data', error);
+  }
+}
 
 export default Project;
