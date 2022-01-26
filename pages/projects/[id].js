@@ -48,7 +48,7 @@ export async function getStaticPaths() {
       params: { id: project.id },
     }));
 
-    return { paths, fallback: false };
+    return { paths, fallback: 'blocking' };
   } catch (error) {
     console.error('Error fetching data', error);
   }
