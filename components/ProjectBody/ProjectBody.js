@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 
 const ProjectBody = ({ data }) => {
   const MotionBox = motion(Box);
+  if (!data) return null;
   return (
     <Box as="section" sx={{ py: 12 }}>
       <Grid container spacing={12} justifyContent="space-between">
