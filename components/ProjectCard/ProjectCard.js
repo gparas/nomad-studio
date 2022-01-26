@@ -26,7 +26,7 @@ const ProjectCard = ({ project }) => {
               alt={project.title}
               blurDataURL={project.featured_media.blurDataURL}
               placeholder="blur"
-              layout="responsive"
+              layout="intrinsic"
               width={664}
               height={374}
             />
