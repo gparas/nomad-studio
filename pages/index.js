@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Typography from '@mui/material/Typography';
 import {
   ProjectsList,
@@ -9,6 +10,9 @@ import {
 const Home = () => {
   return (
     <>
+      <Head>
+        <title>Nomad Studio - Landscape, Interior & Exterior</title>
+      </Head>
       <MainScreen />
       <MissionStatement />
       <Section py={25}>

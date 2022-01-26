@@ -1,37 +1,43 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
+import Image from 'next/image';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 
 const ProjectCard = ({ project }) => {
   const MotionTypography = motion(Typography);
-  const MotionMedia = motion(CardMedia);
   return (
     <Card elevation={0}>
       <NextLink href={`/projects/${project.id}`} passHref>
-        <CardActionArea>
-          <MotionMedia
-            component="img"
-            image={project.featured_media}
-            alt={project.title}
+        <CardActionArea aria-label={`view ${project.title}`}>
+          <motion.div
             layoutId={`featured-media-${project.id}`}
-            sx={{
-              zIndex: 2,
+            style={{
               position: 'relative',
-              height: [240, 272, 320, 400],
+              width: '100%',
+              zIndex: 2,
             }}
-          />
-          <CardContent>
-            <MotionTypography variant="h5" layoutId={`title-${project.id}`}>
-              {project.title}
-            </MotionTypography>
-          </CardContent>
+          >
+            <Image
+              src={project.featured_media.src}
+              alt={project.title}
+              blurDataURL={project.featured_media.blurDataURL}
+              placeholder="blur"
+              layout="responsive"
+              width={664}
+              height={374}
+            />
+          </motion.div>
         </CardActionArea>
       </NextLink>
+      <CardContent sx={{ px: 0 }}>
+        <MotionTypography variant="h5" layoutId={`title-${project.id}`}>
+          {project.title}
+        </MotionTypography>
+      </CardContent>
     </Card>
   );
 };

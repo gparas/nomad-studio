@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Slider from '../components/Slider/Slider';
 import glyfada from '../public/projects/glyfada/6.png';
 import stefanos from '../public/projects/stefanos/1.png';
@@ -31,8 +32,14 @@ const slides = [
 ];
 
 const About = () => {
-  console.log(process.env.NODE_ENV);
-  return <Slider slides={slides} />;
+  return (
+    <>
+      <Head>
+        <title>About - Nomad Studio</title>
+      </Head>
+      <Slider slides={slides} />
+    </>
+  );
 };
 
 export default About;

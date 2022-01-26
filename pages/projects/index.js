@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -7,7 +8,10 @@ import server from '../../lib/server';
 const Projects = ({ data }) => {
   if (!data) return <Container>Loading...</Container>;
   return (
-    <Box sx={{ py: [4, 24, 40] }}>
+    <Box as="section" sx={{ py: [4, 24, 40] }}>
+      <Head>
+        <title>Projects - Nomad Studio</title>
+      </Head>
       <Container maxWidth="xl">
         <Grid container spacing={[4, 8, 20]}>
           {data.map((project) => {

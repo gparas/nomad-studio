@@ -1,40 +1,47 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-// import Image from 'next/image';
+import Image from 'next/image';
 import NextLink from 'next/link';
+import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import server from '../../lib/server';
 
 const Project = ({ data }) => {
   const MotionTypography = motion(Typography);
-  const MotionMedia = motion(CardMedia);
 
   if (!data) return <Container>Loading...</Container>;
   return (
     <AnimatePresence>
-      <Box key={data.id} sx={{ py: 8 }}>
-        <MotionTypography
-          align="center"
-          variant="h1"
-          gutterBottom
-          layoutId={`title-${data.id}`}
-        >
-          {data.title}
-        </MotionTypography>
-        <MotionMedia
-          component="img"
-          height="560"
-          image={data.featured_media}
-          alt={data.title}
-          layoutId={`featured-media-${data.id}`}
-        />
-        <NextLink href="/projects">
-          <a>back</a>
-        </NextLink>
+      <Box as="article" key={data.id} sx={{ py: 8 }}>
+        <Head>
+          <title>{data.title}</title>
+        </Head>
+        <Container maxWidth="xl">
+          <MotionTypography
+            align="center"
+            variant="h1"
+            gutterBottom
+            layoutId={`title-${data.id}`}
+          >
+            {data.title}
+          </MotionTypography>
+          <motion.div
+            layoutId={`featured-media-${data.id}`}
+            style={{ position: 'relative', width: '100%', height: 560 }}
+          >
+            <Image
+              alt={data.title}
+              src={data.featured_media.src}
+              layout="fill"
+              objectFit="cover"
+            />
+          </motion.div>
+          <NextLink href="/projects">
+            <a>back</a>
+          </NextLink>
+        </Container>
       </Box>
     </AnimatePresence>
   );
