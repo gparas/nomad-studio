@@ -1,5 +1,4 @@
 import React from 'react';
-import NextLink from 'next/link';
 import Head from 'next/head';
 import { AnimatePresence } from 'framer-motion';
 import Container from '@mui/material/Container';
@@ -18,9 +17,6 @@ const Project = ({ data }) => {
         <Container maxWidth="xl">
           <ProjectHeader data={data} />
           <ProjectBody data={data.content} />
-          <NextLink href={`/projects/${+data.id + 1}`}>
-            <a>Next Project</a>
-          </NextLink>
         </Container>
       </Box>
     </AnimatePresence>
@@ -48,10 +44,11 @@ export async function getStaticPaths() {
     const res = await fetch(`${server}/api`);
     const data = await res.json();
 
-    return {
-      paths: data.map((item) => `/projects/${item.id}`),
-      fallback: true,
-    };
+    const paths = data.map((project) => ({
+      params: { id: project.id },
+    }));
+
+    return { paths, fallback: false };
   } catch (error) {
     console.error('Error fetching data', error);
   }
