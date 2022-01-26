@@ -61,7 +61,11 @@ const Footer = () => {
             {social.map((item) => {
               const Icon = iconComponents[item.title];
               return (
-                <IconButton key={item.title} color="inherit">
+                <IconButton
+                  key={item.title}
+                  color="inherit"
+                  aria-label={item.title}
+                >
                   <Icon />
                 </IconButton>
               );

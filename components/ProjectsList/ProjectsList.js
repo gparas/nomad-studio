@@ -62,6 +62,7 @@ const ProjectsList = () => {
                     component="a"
                     onMouseEnter={() => projectEnter(project)}
                     onMouseLeave={projectLeave}
+                    aria-label={`view ${project.title}`}
                   >
                     <ListItemText
                       primary={`${U.pad(i + 1)}. ${project.title}`}

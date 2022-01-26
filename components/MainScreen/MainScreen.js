@@ -21,7 +21,7 @@ const MainScreen = () => {
       >
         NOMAD STUDIO
       </Typography>
-      <Typography variant="h5" align="center" mb={[13, 19]}>
+      <Typography variant="h5" component="div" align="center" mb={[13, 19]}>
         LANDSCAPE, INTERIOR & EXTERIOR
       </Typography>
       <MotionBox
