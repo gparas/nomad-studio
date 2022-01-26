@@ -1,16 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 import NextLink from 'next/link';
 import Head from 'next/head';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import server from '../../lib/server';
+import { ProjectHeader, ProjectBody } from '../../components';
 
 const Project = ({ data }) => {
-  const MotionTypography = motion(Typography);
-
   if (!data) return <Container>Loading...</Container>;
   return (
     <AnimatePresence>
@@ -19,27 +16,10 @@ const Project = ({ data }) => {
           <title>{data.title}</title>
         </Head>
         <Container maxWidth="xl">
-          <MotionTypography
-            align="center"
-            variant="h1"
-            gutterBottom
-            layoutId={`title-${data.id}`}
-          >
-            {data.title}
-          </MotionTypography>
-          <motion.div
-            layoutId={`featured-media-${data.id}`}
-            style={{ position: 'relative', width: '100%', height: 560 }}
-          >
-            <Image
-              alt={data.title}
-              src={data.featured_media.src}
-              layout="fill"
-              objectFit="cover"
-            />
-          </motion.div>
-          <NextLink href="/projects">
-            <a>back</a>
+          <ProjectHeader data={data} />
+          <ProjectBody data={data.content} />
+          <NextLink href={`/projects/${+data.id + 1}`}>
+            <a>Next Project</a>
           </NextLink>
         </Container>
       </Box>
@@ -68,10 +48,11 @@ export async function getStaticPaths() {
     const res = await fetch(`${server}/api`);
     const data = await res.json();
 
-    return {
-      paths: data.map((item) => `/projects/${item.id}`),
-      fallback: true,
-    };
+    const paths = data.map((project) => ({
+      params: { id: project.id },
+    }));
+
+    return { paths, fallback: false };
   } catch (error) {
     console.error('Error fetching data', error);
   }
