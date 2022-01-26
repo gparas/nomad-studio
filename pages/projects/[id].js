@@ -48,9 +48,10 @@ export async function getStaticPaths() {
     const res = await fetch(`${server}/api`);
     const data = await res.json();
 
-    const paths = data.map((item) => `/projects/${item.id}`);
-
-    return { paths, fallback: true };
+    return {
+      paths: data.map((item) => `/projects/${item.id}`),
+      fallback: true,
+    };
   } catch (error) {
     console.error('Error fetching data', error);
   }
