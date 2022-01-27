@@ -7,10 +7,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Cursor from './Cursor';
-import C from './constants';
-import U from './utils';
+import pad from '../../lib/pad';
 
-const ProjectsList = () => {
+const ProjectsList = ({ projects }) => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const [cursor, setCursor] = useState({
@@ -34,7 +33,7 @@ const ProjectsList = () => {
   const projectEnter = (project) => {
     setCursor({
       id: project.id,
-      img: project.img,
+      img: project.featured_media.src,
     });
   };
 
@@ -44,7 +43,6 @@ const ProjectsList = () => {
       img: '',
     });
   };
-
   return (
     <>
       <Cursor
@@ -53,11 +51,11 @@ const ProjectsList = () => {
         mouseYPosition={cursorY}
       />
       <List component="nav">
-        {C.PROJECTS.map((project, i) => {
+        {projects.map((project) => {
           return (
             <Fragment key={project.id}>
               <ListItem component="div" disableGutters>
-                <NextLink href={project.path} passHref>
+                <NextLink href={`/projects/${project.id}`} passHref>
                   <ListItemButton
                     component="a"
                     onMouseEnter={() => projectEnter(project)}
@@ -65,8 +63,8 @@ const ProjectsList = () => {
                     aria-label={`view ${project.title}`}
                   >
                     <ListItemText
-                      primary={`${U.pad(i + 1)}. ${project.title}`}
-                      primaryTypographyProps={{ variant: 'h3' }}
+                      primary={`${pad(+project.id)}. ${project.title}`}
+                      primaryTypographyProps={{ variant: 'h4' }}
                     />
                   </ListItemButton>
                 </NextLink>

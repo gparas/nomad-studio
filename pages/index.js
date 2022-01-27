@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Typography from '@mui/material/Typography';
+import server from '../lib/server';
 import {
   ProjectsList,
   Section,
@@ -8,7 +9,7 @@ import {
   Background,
 } from '../components';
 
-const Home = () => {
+const Home = ({ projects }) => {
   return (
     <>
       <Head>
@@ -26,11 +27,24 @@ const Home = () => {
           >
             Selected Work
           </Typography>
-          <ProjectsList />
+          <ProjectsList projects={projects} />
         </Section>
       </Background>
     </>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const res = await fetch(`${server}/api`);
+    const projects = await res.json();
+
+    return {
+      props: { projects },
+    };
+  } catch (error) {
+    console.error('Error fetching data', error);
+  }
+}
 
 export default Home;

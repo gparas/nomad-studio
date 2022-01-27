@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Slider from '../components/Slider/Slider';
-import glyfada from '../public/projects/glyfada/6.png';
+import glyfada from '../public/projects/glyfada/img1.png';
 import stefanos from '../public/projects/stefanos/1.png';
 
 const slides = [
