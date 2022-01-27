@@ -17,7 +17,7 @@ const Project = ({ data }) => {
         </Head>
         <Container maxWidth="xl">
           <ProjectHeader data={data} />
-          <ProjectBody data={data.content} />
+          <ProjectBody data={data} />
           <Link href={`/projects/${+data.id + 1}`}>
             <a>Next project</a>
           </Link>

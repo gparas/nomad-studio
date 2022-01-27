@@ -36,7 +36,7 @@ const ProjectHeader = ({ data }) => {
       <motion.div layoutId={`featured-media-${data.id}`}>
         <Image
           alt={data.title}
-          src={data.featured_media.src}
+          src={data.featured_media}
           layout="intrinsic"
           width={1488}
           height={837}

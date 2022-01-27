@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { getCol } from './utils';
 
 const ProjectBody = ({ data }) => {
+  const content = data.content;
   return (
     <Box as="section" sx={{ py: [4, 8, 12] }}>
       <Grid
@@ -13,9 +13,10 @@ const ProjectBody = ({ data }) => {
         spacing={{ xs: 4, sm: 8, md: 12 }}
         justifyContent="space-between"
       >
-        {Object.keys(data).map((key) => {
+        {Object.keys(content).map((key) => {
+          const { src, col } = content[key];
           return (
-            <Grid key={key} item sm={getCol(key)} xs={12}>
+            <Grid key={key} item sm={col} xs={12}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -26,10 +27,12 @@ const ProjectBody = ({ data }) => {
                 }}
               >
                 <Image
-                  src={data[key]}
+                  src={src}
                   layout="intrinsic"
                   width={1488}
                   height={837}
+                  blurDataURL={data.blurDataURL}
+                  placeholder="blur"
                 />
               </motion.div>
             </Grid>

@@ -33,7 +33,7 @@ const ProjectsList = ({ projects }) => {
   const projectEnter = (project) => {
     setCursor({
       id: project.id,
-      img: project.featured_media.src,
+      img: project.featured_media,
     });
   };
 
