@@ -41,6 +41,7 @@ export async function getStaticProps({ params: { id } }) {
       props: {
         data,
       },
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Error fetching data', error);
@@ -59,7 +60,7 @@ export async function getStaticPaths() {
       params: { id },
     }));
 
-    return { paths, fallback: false };
+    return { paths, fallback: 'blocking' };
   } catch (error) {
     console.error('Error fetching data', error);
   }
