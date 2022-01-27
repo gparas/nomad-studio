@@ -16,7 +16,7 @@ const Project = ({ data }) => {
         </Head>
         <Container maxWidth="xl">
           <ProjectHeader data={data} />
-          <ProjectBody data={data.content || []} />
+          <ProjectBody data={data} />
         </Container>
       </Box>
     </AnimatePresence>

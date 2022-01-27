@@ -9,7 +9,7 @@ const ProjectBody = ({ data }) => {
   return (
     <Box as="section" sx={{ py: 12 }}>
       <Grid container spacing={12} justifyContent="space-between">
-        {data.map((item, index) => {
+        {data.content.map((item, index) => {
           const col = index === 0 ? 3 : index === 3 ? 12 : index === 4 ? 3 : 7;
           const height =
             index === 0 ? 320 : index === 3 ? 512 : index === 4 ? 320 : 480;
