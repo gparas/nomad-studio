@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
-const ProjectBody = ({ data = [] }) => {
+const ProjectBody = ({ data }) => {
   const MotionBox = motion(Box);
   return (
     <Box as="section" sx={{ py: 12 }}>
