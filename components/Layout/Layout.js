@@ -20,7 +20,6 @@ const Layout = ({ children }) => {
           backgroundColor: '#fff',
           marginBottom: '100vh',
           minHeight: '100vh',
-          transition: 'all 500ms linear',
           overflowX: 'hidden',
         }}
       >

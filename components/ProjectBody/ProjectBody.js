@@ -3,17 +3,20 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { getCol, getHeight } from './utils';
+import { getCol } from './utils';
 
 const ProjectBody = ({ data }) => {
-  const MotionBox = motion(Box);
   return (
-    <Box as="section" sx={{ py: 12 }}>
-      <Grid container spacing={12} justifyContent="space-between">
+    <Box as="section" sx={{ py: [4, 8, 12] }}>
+      <Grid
+        container
+        spacing={{ xs: 4, sm: 8, md: 12 }}
+        justifyContent="space-between"
+      >
         {Object.keys(data).map((key) => {
           return (
-            <Grid key={key} item sm={getCol(key)}>
-              <MotionBox
+            <Grid key={key} item sm={getCol(key)} xs={12}>
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -21,10 +24,14 @@ const ProjectBody = ({ data }) => {
                   ease: [0.45, 0.05, 0.55, 0.95],
                   duration: 0.64,
                 }}
-                sx={{ position: 'relative', height: getHeight(key) }}
               >
-                <Image src={data[key]} layout="fill" objectFit="cover" />
-              </MotionBox>
+                <Image
+                  src={data[key]}
+                  layout="intrinsic"
+                  width={1488}
+                  height={837}
+                />
+              </motion.div>
             </Grid>
           );
         })}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { AnimatePresence } from 'framer-motion';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -17,6 +18,9 @@ const Project = ({ data }) => {
         <Container maxWidth="xl">
           <ProjectHeader data={data} />
           <ProjectBody data={data.content} />
+          <Link href={`/projects/${+data.id + 1}`}>
+            <a>Next project</a>
+          </Link>
         </Container>
       </Box>
     </AnimatePresence>
@@ -31,7 +35,7 @@ export async function getStaticProps({ params: { id } }) {
     if (!data) {
       return {
         redirect: {
-          destination: '/projects',
+          destination: '/projects/1',
           permanent: false,
         },
       };
@@ -60,7 +64,7 @@ export async function getStaticPaths() {
       params: { id },
     }));
 
-    return { paths, fallback: 'blocking' };
+    return { paths, fallback: false };
   } catch (error) {
     console.error('Error fetching data', error);
   }

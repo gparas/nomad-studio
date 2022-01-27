@@ -33,19 +33,13 @@ const ProjectHeader = ({ data }) => {
           size: {data.size} m<sup>2</sup>
         </Typography>
       </Box>
-      <motion.div
-        layoutId={`featured-media-${data.id}`}
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '40vw',
-        }}
-      >
+      <motion.div layoutId={`featured-media-${data.id}`}>
         <Image
           alt={data.title}
           src={data.featured_media.src}
-          layout="fill"
-          objectFit="cover"
+          layout="intrinsic"
+          width={1488}
+          height={837}
         />
       </motion.div>
     </section>

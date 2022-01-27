@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { slideMargin, slideSize, variants } from './constants';
+import { slideSize, variants } from './constants';
 
 const Slide = ({ current, index, ...other }) => {
   return (
     <motion.div
       style={{
         flex: '1 1 0%',
-        // margin: `0 ${slideMargin}`,
         position: 'relative',
         height: slideSize,
         width: slideSize,

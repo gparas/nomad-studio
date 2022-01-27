@@ -5,6 +5,7 @@ import {
   Section,
   MainScreen,
   MissionStatement,
+  Background,
 } from '../components';
 
 const Home = () => {
@@ -13,19 +14,21 @@ const Home = () => {
       <Head>
         <title>Nomad Studio - Landscape, Interior & Exterior</title>
       </Head>
-      <MainScreen />
-      <MissionStatement />
-      <Section py={25}>
-        <Typography
-          fontFamily="fontFamilySerif"
-          variant="h1"
-          align="center"
-          mb={8}
-        >
-          Selected Work
-        </Typography>
-        <ProjectsList />
-      </Section>
+      <Background>
+        <MainScreen />
+        <MissionStatement />
+        <Section py={25}>
+          <Typography
+            fontFamily="fontFamilySerif"
+            variant="h1"
+            align="center"
+            mb={8}
+          >
+            Selected Work
+          </Typography>
+          <ProjectsList />
+        </Section>
+      </Background>
     </>
   );
 };
