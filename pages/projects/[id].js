@@ -28,8 +28,19 @@ export async function getStaticProps({ params: { id } }) {
     const res = await fetch(`${server}/api/${id}`);
     const data = await res.json();
 
+    if (!data) {
+      return {
+        redirect: {
+          destination: '/projects',
+          permanent: false,
+        },
+      };
+    }
+
     return {
-      props: { data },
+      props: {
+        data,
+      },
     };
   } catch (error) {
     console.error('Error fetching data', error);
@@ -44,11 +55,11 @@ export async function getStaticPaths() {
     const res = await fetch(`${server}/api`);
     const data = await res.json();
 
-    const paths = data.map((item) => ({
-      params: { id: +item.id },
+    const paths = data.map(({ id }) => ({
+      params: { id },
     }));
 
-    return { paths, fallback: true };
+    return { paths, fallback: false };
   } catch (error) {
     console.error('Error fetching data', error);
   }
