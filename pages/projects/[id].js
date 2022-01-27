@@ -16,7 +16,7 @@ const Project = ({ data }) => {
         </Head>
         <Container maxWidth="xl">
           <ProjectHeader data={data} />
-          <ProjectBody data={data} />
+          <ProjectBody data={data.content} />
         </Container>
       </Box>
     </AnimatePresence>
@@ -44,8 +44,8 @@ export async function getStaticPaths() {
     const res = await fetch(`${server}/api`);
     const data = await res.json();
 
-    const paths = data.map((project) => ({
-      params: { id: project.id },
+    const paths = data.map((item) => ({
+      params: { id: +item.id },
     }));
 
     return { paths, fallback: true };
