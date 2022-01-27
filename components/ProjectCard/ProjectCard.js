@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 const ProjectCard = ({ project }) => {
   const MotionTypography = motion(Typography);
   return (
-    <Card elevation={0}>
+    <Card elevation={0} square>
       <NextLink href={`/projects/${project.id}`} passHref>
         <CardActionArea aria-label={`view ${project.title}`}>
           <motion.div
