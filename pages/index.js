@@ -41,6 +41,7 @@ export async function getStaticProps() {
 
     return {
       props: { projects },
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Error fetching data', error);
