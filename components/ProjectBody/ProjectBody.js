@@ -31,7 +31,7 @@ const ProjectBody = ({ data }) => {
                   layout="intrinsic"
                   width={1488}
                   height={837}
-                  blurDataURL={data.blurDataURL}
+                  blurDataURL={data.featured_media.blurDataURL}
                   placeholder="blur"
                 />
               </motion.div>

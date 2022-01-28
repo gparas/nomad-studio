@@ -22,9 +22,9 @@ const ProjectCard = ({ project }) => {
             }}
           >
             <Image
-              src={project.featured_media}
+              src={project.featured_media.src}
               alt={project.title}
-              blurDataURL={project.blurDataURL}
+              blurDataURL={project.featured_media.blurDataURL}
               placeholder="blur"
               layout="intrinsic"
               width={664}

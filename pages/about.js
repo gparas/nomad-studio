@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Slider from '../components/Slider/Slider';
 import glyfada from '../public/projects/glyfada/img1.png';
 import stefanos from '../public/projects/stefanos/1.png';
+import { Immersive } from '../components';
 
 const slides = [
   {
@@ -38,6 +39,7 @@ const About = () => {
         <title>About - Nomad Studio</title>
       </Head>
       <Slider slides={slides} />
+      <Immersive src="https://api2.enscape3d.com/v3/view/33b72d74-33ce-42de-9108-48d70d6c40c4" />
     </>
   );
 };

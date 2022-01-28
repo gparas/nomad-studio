@@ -8,3 +8,4 @@ export { default as ProjectCard } from './ProjectCard';
 export { default as ProjectHeader } from './ProjectHeader';
 export { default as ProjectBody } from './ProjectBody';
 export { default as Background } from './Background';
+export { default as Immersive } from './Immersive';

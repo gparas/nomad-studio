@@ -4,8 +4,10 @@ export default [
   {
     id: '1',
     title: 'Residential building in Glyfada',
-    featured_media: '/projects/glyfada/img1.png',
-    blurDataURL: rgbDataURL(84, 87, 89),
+    featured_media: {
+      src: '/projects/glyfada/img1.png',
+      blurDataURL: rgbDataURL(84, 87, 89),
+    },
     size: 965,
     date: 2020,
     content: {
@@ -17,8 +19,10 @@ export default [
   {
     id: '2',
     title: 'Sea Restaurant in Syros',
-    featured_media: '/projects/syros_restaurant/img1.png',
-    blurDataURL: rgbDataURL(170, 163, 162),
+    featured_media: {
+      src: '/projects/syros_restaurant/img1.png',
+      blurDataURL: rgbDataURL(170, 163, 162),
+    },
     size: 965,
     date: 2020,
     content: {
@@ -31,8 +35,10 @@ export default [
   {
     id: '3',
     title: 'Whealth Store in Ermoupoly',
-    featured_media: '/projects/whealth_store/img1.png',
-    blurDataURL: rgbDataURL(94, 82, 68),
+    featured_media: {
+      src: '/projects/whealth_store/img1.png',
+      blurDataURL: rgbDataURL(94, 82, 68),
+    },
     size: 965,
     date: 2020,
     content: {
@@ -48,8 +54,10 @@ export default [
   {
     id: '4',
     title: 'Villa in Syros',
-    featured_media: '/projects/villa_syros/img1.png',
-    blurDataURL: rgbDataURL(165, 151, 142),
+    featured_media: {
+      src: '/projects/villa_syros/img1.png',
+      blurDataURL: rgbDataURL(165, 151, 142),
+    },
     size: 965,
     date: 2020,
     content: {
@@ -66,8 +74,10 @@ export default [
   {
     id: '5',
     title: 'LeBron',
-    featured_media: '/projects/glyfada/img1.png',
-    blurDataURL: rgbDataURL(84, 87, 89),
+    featured_media: {
+      src: '/projects/glyfada/img1.png',
+      blurDataURL: rgbDataURL(84, 87, 89),
+    },
     size: 965,
     date: 2020,
     content: {
@@ -83,8 +93,10 @@ export default [
   {
     id: '6',
     title: 'Lil',
-    featured_media: '/projects/stefanos/1.png',
-    blurDataURL: rgbDataURL(165, 151, 141),
+    featured_media: {
+      src: '/projects/stefanos/1.png',
+      blurDataURL: rgbDataURL(165, 151, 141),
+    },
     size: 965,
     date: 2020,
     content: {
