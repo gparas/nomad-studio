@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import pad from '../../lib/pad';
+import Immersive from '../Immersive/Immersive';
 
 const ProjectHeader = ({ data }) => {
   const MotionTypography = motion(Typography);
@@ -27,12 +27,19 @@ const ProjectHeader = ({ data }) => {
           </Typography>
         </Grid>
       </Grid>
-      <Box mb={3}>
-        <Typography variant="button">project date: {data.date}</Typography>
-        <Typography variant="button" ml={4}>
-          size: {data.size} m<sup>2</sup>
-        </Typography>
-      </Box>
+      <Grid container mb={3}>
+        <Grid item sm xs={12}>
+          <Typography variant="button">project date: {data.date}</Typography>
+          <Typography variant="button" ml={4}>
+            size: {data.size} m<sup>2</sup>
+          </Typography>
+        </Grid>
+        {data.immersive ? (
+          <Grid item>
+            <Immersive src={data.immersive} />
+          </Grid>
+        ) : null}
+      </Grid>
       <motion.div layoutId={`featured-media-${data.id}`}>
         <Image
           alt={data.title}

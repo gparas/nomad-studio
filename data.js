@@ -50,6 +50,8 @@ export default [
       img6: { src: '/projects/whealth_store/img7.png', col: 7 },
       img7: { src: '/projects/whealth_store/img8.png', col: 7 },
     },
+    immersive:
+      'https://api2.enscape3d.com/v3/view/ccb34841-dd37-4217-a126-5c583a24aa16',
   },
   {
     id: '4',
