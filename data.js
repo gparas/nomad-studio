@@ -71,6 +71,11 @@ export default [
       img6: { src: '/projects/villa_syros/img7.png', col: 7 },
       img7: { src: '/projects/villa_syros/img8.png', col: 7 },
       img8: { src: '/projects/villa_syros/img9.png', col: 4 },
+      img9: { src: '/projects/villa_syros/img10.jpg', col: 12 },
+      img10: { src: '/projects/villa_syros/img11.jpg', col: 4 },
+      img11: { src: '/projects/villa_syros/img12.jpg', col: 7 },
+      img12: { src: '/projects/villa_syros/img13.jpg', col: 7 },
+      img13: { src: '/projects/villa_syros/img14.jpg', col: 12 },
     },
   },
   {
