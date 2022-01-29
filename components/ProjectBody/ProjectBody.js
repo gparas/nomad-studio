@@ -10,7 +10,7 @@ const ProjectBody = ({ data }) => {
     <Box as="section" sx={{ py: [4, 8, 12] }}>
       <Grid
         container
-        spacing={{ xs: 4, sm: 8, md: 12 }}
+        spacing={{ xs: 0.5, sm: 8, md: 12 }}
         justifyContent="space-between"
       >
         {Object.keys(content).map((key) => {

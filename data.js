@@ -3,7 +3,7 @@ import rgbDataURL from './lib/rgbDataURL';
 export default [
   {
     id: '1',
-    title: 'Residential building in Glyfada',
+    title: 'Residential building Glyfada',
     featured_media: {
       src: '/projects/glyfada/img1.png',
       blurDataURL: rgbDataURL(84, 87, 89),
@@ -18,7 +18,7 @@ export default [
   },
   {
     id: '2',
-    title: 'Sea Restaurant in Syros',
+    title: 'Sea Restaurant Syros',
     featured_media: {
       src: '/projects/syros_restaurant/img1.png',
       blurDataURL: rgbDataURL(170, 163, 162),
@@ -34,7 +34,7 @@ export default [
   },
   {
     id: '3',
-    title: 'Whealth Store in Ermoupoly',
+    title: 'Whealth Store Ermoupoly',
     featured_media: {
       src: '/projects/whealth_store/img1.png',
       blurDataURL: rgbDataURL(94, 82, 68),
@@ -55,7 +55,7 @@ export default [
   },
   {
     id: '4',
-    title: 'Villa in Syros',
+    title: 'Villa Syros',
     featured_media: {
       src: '/projects/villa_syros/img1.png',
       blurDataURL: rgbDataURL(165, 151, 142),
@@ -75,7 +75,7 @@ export default [
   },
   {
     id: '5',
-    title: 'Renovation house in Scotland',
+    title: 'Renovation house Scotland',
     featured_media: {
       src: '/projects/scotland/featured_img.jpg',
       blurDataURL: rgbDataURL(188, 184, 185),
@@ -100,21 +100,27 @@ export default [
   },
   {
     id: '6',
-    title: 'Lil',
+    title: 'Resort Hotel Dubai',
     featured_media: {
-      src: '/projects/stefanos/1.png',
-      blurDataURL: rgbDataURL(165, 151, 141),
+      src: '/projects/resort_dubai/featured_img.png',
+      blurDataURL: rgbDataURL(165, 149, 134),
     },
     size: 965,
     date: 2020,
     content: {
-      img1: { src: '/projects/glyfada/img1.png', col: 4 },
-      img2: { src: '/projects/glyfada/img1.png', col: 7 },
-      img3: { src: '/projects/glyfada/img1.png', col: 7 },
-      img4: { src: '/projects/glyfada/img1.png', col: 12 },
-      img5: { src: '/projects/glyfada/img1.png', col: 4 },
-      img6: { src: '/projects/glyfada/img1.png', col: 7 },
-      img7: { src: '/projects/glyfada/img1.png', col: 7 },
+      img1: { src: '/projects/resort_dubai/img1.png', col: 4 },
+      img2: { src: '/projects/resort_dubai/img2.png', col: 7 },
+      img3: { src: '/projects/resort_dubai/img3.png', col: 7 },
+      img4: { src: '/projects/resort_dubai/img4.png', col: 4 },
+      img5: { src: '/projects/resort_dubai/img5.png', col: 4 },
+      img6: { src: '/projects/resort_dubai/img6.png', col: 7 },
+      img7: { src: '/projects/resort_dubai/img7.png', col: 7 },
+      img8: { src: '/projects/resort_dubai/img8.png', col: 12 },
+      img9: { src: '/projects/resort_dubai/img9.png', col: 4 },
+      img10: { src: '/projects/resort_dubai/img10.png', col: 7 },
+      img11: { src: '/projects/resort_dubai/img11.png', col: 7 },
+      img12: { src: '/projects/resort_dubai/img12.png', col: 12 },
+      img13: { src: '/projects/resort_dubai/img13.png', col: 7 },
     },
   },
 ];
