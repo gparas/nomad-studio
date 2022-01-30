@@ -11,6 +11,7 @@ const ProjectVideo = ({ video }) => {
     <Box as="section" sx={{ mb: 20 }}>
       <motion.video
         ref={videoRef}
+        playsInline
         loop
         autoPlay
         muted
