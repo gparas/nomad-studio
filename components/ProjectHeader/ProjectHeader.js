@@ -21,6 +21,8 @@ const ProjectHeader = ({ data }) => {
         <Image
           alt={data.title}
           src={data.featured_media.src}
+          placeholder="blur"
+          blurDataURL={data.featured_media.blurDataURL}
           layout="fill"
           objectFit="cover"
           priority
@@ -34,7 +36,7 @@ const ProjectHeader = ({ data }) => {
             paddingBottom: 56,
           }}
         >
-          <Container maxWidth="xl">
+          <Container>
             <Typography
               variant="h2"
               component="h1"

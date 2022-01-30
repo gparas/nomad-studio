@@ -10,8 +10,8 @@ const ProjectDetails = () => {
     display: 'inline-flex',
   };
   return (
-    <Box as="section" sx={{ py: 12 }}>
-      <Container maxWidth="xl">
+    <Box as="section" sx={{ py: 20 }}>
+      <Container>
         <Grid container spacing={8}>
           <Grid item>
             <Typography>
@@ -24,7 +24,7 @@ const ProjectDetails = () => {
               <b style={style}>Sector:</b> Hospitality
             </Typography>
           </Grid>
-          <Grid item lg={5} sm>
+          <Grid item lg={7} sm>
             <Typography
               fontWeight="fontWeightBold"
               mb={2}

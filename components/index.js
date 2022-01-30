@@ -8,5 +8,6 @@ export { default as ProjectCard } from './ProjectCard';
 export { default as ProjectDetails } from './ProjectDetails';
 export { default as ProjectHeader } from './ProjectHeader';
 export { default as ProjectsList } from './ProjectsList';
+export { default as ProjectVideo } from './ProjectVideo';
 export { default as Section } from './Section';
 export { default as Slider } from './Slider';
