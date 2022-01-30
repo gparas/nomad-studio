@@ -1,5 +1,4 @@
 import { useCycle, AnimateSharedLayout } from 'framer-motion';
-import Toolbar from '@mui/material/Toolbar';
 import Header from '../Header';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
@@ -7,7 +6,7 @@ import Footer from '../Footer';
 const Layout = ({ children }) => {
   const [isMenuOpen, toggleMenuOpen] = useCycle(false, true);
   return (
-    <AnimateSharedLayout>
+    <AnimateSharedLayout type="crossfade">
       <Header isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
       <Navigation isMenuOpen={isMenuOpen} toggleMenuOpen={toggleMenuOpen} />
       <main
@@ -23,7 +22,6 @@ const Layout = ({ children }) => {
           overflowX: 'hidden',
         }}
       >
-        <Toolbar />
         {children}
       </main>
       <Footer />

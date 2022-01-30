@@ -1,56 +1,64 @@
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Grid from '@mui/material/Grid';
+import { AnimatePresence, motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
-import pad from '../../lib/pad';
-import Immersive from '../Immersive/Immersive';
+import Container from '@mui/material/Container';
 
 const ProjectHeader = ({ data }) => {
-  const MotionTypography = motion(Typography);
   return (
-    <section>
-      <Grid container mb={5}>
-        <Grid item xs>
-          <MotionTypography
-            variant="h1"
-            fontFamily="fontFamilySerif"
-            layoutId={`title-${data.id}`}
-            sx={{ textTransform: 'uppercase' }}
-          >
-            {data.title}
-          </MotionTypography>
-        </Grid>
-        <Grid item>
-          <Typography variant="h3" component="div" mt={1}>
-            {pad(data.id)}
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container mb={3}>
-        <Grid item sm xs={12}>
-          <Typography variant="button">project date: {data.date}</Typography>
-          <Typography variant="button" ml={4}>
-            size: {data.size} m<sup>2</sup>
-          </Typography>
-        </Grid>
-        {data.immersive ? (
-          <Grid item>
-            <Immersive src={data.immersive} />
-          </Grid>
-        ) : null}
-      </Grid>
-      <motion.div layoutId={`featured-media-${data.id}`}>
+    <AnimatePresence>
+      <motion.section
+        layoutId={`featured-media-${data.id}`}
+        style={{
+          height: '100vh',
+          width: '100%',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          color: '#fff',
+        }}
+      >
         <Image
           alt={data.title}
           src={data.featured_media.src}
-          layout="intrinsic"
-          width={1488}
-          height={837}
+          layout="fill"
+          objectFit="cover"
           priority
         />
-      </motion.div>
-    </section>
+        <div
+          style={{
+            position: 'relative',
+            marginTop: 'auto',
+            background:
+              'linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)',
+            paddingBottom: 56,
+          }}
+        >
+          <Container maxWidth="xl">
+            <Typography
+              variant="h2"
+              component="h1"
+              color="inherit"
+              fontWeight="fontWeightMedium"
+              sx={{ overflow: 'hidden' }}
+            >
+              <motion.span
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                style={{ display: 'block' }}
+                transition={{
+                  ease: [0.45, 0.05, 0.55, 0.95],
+                  duration: 0.64,
+                  delay: 0.4,
+                }}
+              >
+                {data.title}
+              </motion.span>
+            </Typography>
+          </Container>
+        </div>
+      </motion.section>
+    </AnimatePresence>
   );
 };
 

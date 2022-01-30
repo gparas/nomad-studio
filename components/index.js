@@ -1,11 +1,12 @@
+export { default as Background } from './Background';
 export { default as Header } from './Header';
+export { default as Immersive } from './Immersive';
 export { default as MainScreen } from './MainScreen';
 export { default as MissionStatement } from './MissionStatement';
+export { default as ProjectBody } from './ProjectBody';
+export { default as ProjectCard } from './ProjectCard';
+export { default as ProjectDetails } from './ProjectDetails';
+export { default as ProjectHeader } from './ProjectHeader';
 export { default as ProjectsList } from './ProjectsList';
 export { default as Section } from './Section';
 export { default as Slider } from './Slider';
-export { default as ProjectCard } from './ProjectCard';
-export { default as ProjectHeader } from './ProjectHeader';
-export { default as ProjectBody } from './ProjectBody';
-export { default as Background } from './Background';
-export { default as Immersive } from './Immersive';

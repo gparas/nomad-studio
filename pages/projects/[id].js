@@ -1,29 +1,26 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { AnimatePresence } from 'framer-motion';
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import server from '../../lib/server';
-import { ProjectHeader, ProjectBody } from '../../components';
+import { ProjectHeader, ProjectBody, ProjectDetails } from '../../components';
 
 const Project = ({ data }) => {
   if (!data) return <Container>Loading...</Container>;
   return (
-    <AnimatePresence>
-      <Box as="article" key={data.id} sx={{ py: 8 }}>
-        <Head>
-          <title>{data.title}</title>
-        </Head>
-        <Container maxWidth="xl">
-          <ProjectHeader data={data} />
-          <ProjectBody data={data} />
-          <Link href={`/projects/${+data.id + 1}`}>
-            <a>Next project</a>
-          </Link>
-        </Container>
-      </Box>
-    </AnimatePresence>
+    <article key={data.id}>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
+      <ProjectHeader data={data} />
+      <ProjectDetails data={data} />
+      <Container maxWidth="xl">
+        <ProjectBody data={data} />
+        <Link href={`/projects/${+data.id + 1}`}>
+          <a>Next project</a>
+        </Link>
+      </Container>
+    </article>
   );
 };
 
