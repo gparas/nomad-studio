@@ -37,7 +37,11 @@ const ProjectHeader = ({ data }) => {
             color="inherit"
             size="large"
             startIcon={<ArrowBack />}
-            sx={{ textTransform: 'capitalize' }}
+            sx={{
+              textTransform: 'capitalize',
+              fontWeight: 600,
+              fontSize: (theme) => theme.typography.pxToRem(18),
+            }}
             onClick={() => router.push('/projects', '', { scroll: false })}
           >
             Back to projects
