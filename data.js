@@ -10,6 +10,7 @@ export default [
     },
     size: 965,
     date: 2020,
+    video: '/projects/glyfada/movie.mp4',
     content: {
       img1: { src: '/projects/glyfada/img2.png', col: 4 },
       img2: { src: '/projects/glyfada/img3.png', col: 7 },
