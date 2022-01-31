@@ -8,7 +8,7 @@ const ProjectVideo = ({ video }) => {
   const pauseVideo = () => videoRef.current.pause();
   if (!video) return null;
   return (
-    <Box as="section" sx={{ mb: 20 }}>
+    <Box as="section" sx={{ mb: [12, 20] }}>
       <motion.video
         ref={videoRef}
         playsInline

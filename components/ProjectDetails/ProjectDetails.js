@@ -10,7 +10,7 @@ const ProjectDetails = () => {
     display: 'inline-flex',
   };
   return (
-    <Box as="section" sx={{ py: 20 }}>
+    <Box as="section" sx={{ py: [12, 20] }}>
       <Container>
         <Grid container spacing={8}>
           <Grid item>
