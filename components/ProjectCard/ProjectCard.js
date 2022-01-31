@@ -1,44 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActionArea from '@mui/material/CardActionArea';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 const ProjectCard = ({ project }) => {
-  const MotionTypography = motion(Typography);
+  const router = useRouter();
   return (
-    <Card elevation={0} square>
-      <NextLink href={`/projects/${project.id}`} passHref scroll={false}>
-        <CardActionArea aria-label={`view ${project.title}`}>
-          <motion.div
-            layoutId={`featured-media-${project.id}`}
-            style={{
-              position: 'relative',
-              width: '100%',
-              zIndex: 2,
-            }}
-          >
-            <Image
-              src={project.featured_media.src}
-              alt={project.title}
-              blurDataURL={project.featured_media.blurDataURL}
-              placeholder="blur"
-              layout="intrinsic"
-              width={664}
-              height={374}
-            />
-          </motion.div>
-        </CardActionArea>
-      </NextLink>
-      <CardContent sx={{ px: 0 }}>
-        <MotionTypography variant="h5" layoutId={`title-${project.id}`}>
-          {project.title}
-        </MotionTypography>
-      </CardContent>
-    </Card>
+    <CardActionArea
+      aria-label={`view ${project.title}`}
+      onClick={() =>
+        router.push(`/projects/${project.id}`, '', {
+          scroll: false,
+        })
+      }
+    >
+      <Box
+        component={motion.div}
+        layoutId={`featured-media-${project.id}`}
+        sx={{
+          position: 'relative',
+          height: [240, 320, 480],
+        }}
+      >
+        <Image
+          src={project.featured_media.src}
+          alt={project.title}
+          blurDataURL={project.featured_media.blurDataURL}
+          placeholder="blur"
+          layout="fill"
+          objectFit="cover"
+        />
+      </Box>
+      <ImageListItemBar
+        sx={{
+          background:
+            'linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%)',
+        }}
+        title={
+          <Typography variant="h5" fontWeight={600}>
+            {project.title}
+          </Typography>
+        }
+      />
+    </CardActionArea>
   );
 };
 

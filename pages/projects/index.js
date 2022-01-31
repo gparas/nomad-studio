@@ -1,40 +1,37 @@
 import Head from 'next/head';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { ProjectCard } from '../../components';
 import server from '../../lib/server';
 
 const Projects = ({ data }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   if (!data) return <Container>Loading...</Container>;
   return (
-    <Box as="section" sx={{ py: [4, 24, 40] }}>
+    <Box as="section" sx={{ pt: [8, 16], pb: [12, 24] }}>
       <Head>
         <title>Projects - Nomad Studio</title>
       </Head>
       <Container maxWidth="xl">
-        <Grid container spacing={[4, 8, 20]}>
-          {data.map((project) => {
-            return (
-              <Grid
-                key={project.id}
-                item
-                xs={12}
-                sm={6}
-                sx={[
-                  {
-                    '&:nth-of-type(odd)': {
-                      mt: [0, -14],
-                    },
-                  },
-                ]}
-              >
-                <ProjectCard project={project} />
-              </Grid>
-            );
-          })}
-        </Grid>
+        <Typography variant="h1" fontFamily="fontFamilySerif" mb={4}>
+          PROJECTS
+        </Typography>
       </Container>
+      <ImageList gap={3}>
+        {data.map((project) => {
+          return (
+            <ImageListItem key={project.id} cols={isMobile ? 2 : 1}>
+              <ProjectCard project={project} />
+            </ImageListItem>
+          );
+        })}
+      </ImageList>
     </Box>
   );
 };

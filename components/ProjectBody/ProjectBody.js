@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import Container from '@mui/material/Container';
 import Remaining from './Remaining';
 import Gallery from './Gallery';
@@ -37,25 +38,26 @@ const ProjectBody = ({ data }) => {
   return (
     <Box as="section" sx={{ pb: 20 }}>
       <Container>
-        <Grid container spacing={0.5}>
+        <ImageList gap={3}>
           {Object.keys(content)
             .slice(0, size)
             .map((key, i) => {
               const { src } = content[key];
               return (
-                <Grid key={key} item sm={6} xs={12}>
-                  <motion.div
-                    custom={i}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={variants}
-                    style={{ position: 'relative', height: 400 }}
-                    transition={{
-                      ease: [0.45, 0.05, 0.55, 0.95],
-                      duration: 0.64,
-                    }}
-                  >
+                <ImageListItem
+                  key={key}
+                  component={motion.li}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={variants}
+                  transition={{
+                    ease: [0.45, 0.05, 0.55, 0.95],
+                    duration: 0.64,
+                  }}
+                >
+                  <Box sx={{ position: 'relative', height: [160, 240, 360] }}>
                     <Remaining
                       remaining={remaining}
                       lastItem={lastItem === key}
@@ -69,11 +71,11 @@ const ProjectBody = ({ data }) => {
                       blurDataURL={data.featured_media.blurDataURL}
                       placeholder="blur"
                     />
-                  </motion.div>
-                </Grid>
+                  </Box>
+                </ImageListItem>
               );
             })}
-        </Grid>
+        </ImageList>
       </Container>
       <Gallery
         open={open}
