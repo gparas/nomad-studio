@@ -3,10 +3,12 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Close from './Close';
 
 const ProjectHeader = ({ data }) => {
   return (
     <AnimatePresence>
+      <Close />
       <motion.section
         layoutId={`featured-media-${data.id}`}
         style={{

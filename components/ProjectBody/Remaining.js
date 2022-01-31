@@ -5,7 +5,7 @@ const Remaining = ({ remaining, lastItem }) => {
   if (!remaining || !lastItem) return null;
   return (
     <div
-      sx={{
+      style={{
         position: 'absolute',
         width: '100%',
         height: '100%',

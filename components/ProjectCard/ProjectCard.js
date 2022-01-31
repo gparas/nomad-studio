@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
   const MotionTypography = motion(Typography);
   return (
     <Card elevation={0} square>
-      <NextLink href={`/projects/${project.id}`} passHref>
+      <NextLink href={`/projects/${project.id}`} passHref scroll={false}>
         <CardActionArea aria-label={`view ${project.title}`}>
           <motion.div
             layoutId={`featured-media-${project.id}`}

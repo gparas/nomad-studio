@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
-import Container from '@mui/material/Container';
+import Dialog from '@mui/material/Dialog';
 import server from '../../lib/server';
 import {
   ProjectHeader,
@@ -11,9 +10,18 @@ import {
 } from '../../components';
 
 const Project = ({ data }) => {
-  if (!data) return <Container>Loading...</Container>;
+  if (!data) return null;
   return (
-    <article key={data.id}>
+    <Dialog
+      fullScreen
+      key={data.id}
+      open
+      scroll="body"
+      TransitionComponent={Fragment}
+      PaperProps={{
+        component: 'article',
+      }}
+    >
       <Head>
         <title>{data.title}</title>
       </Head>
@@ -21,12 +29,7 @@ const Project = ({ data }) => {
       <ProjectDetails data={data} />
       <ProjectVideo video={data.video} />
       <ProjectBody data={data} />
-      <Container maxWidth="lg">
-        <Link href={`/projects/${+data.id + 1}`}>
-          <a>Next project</a>
-        </Link>
-      </Container>
-    </article>
+    </Dialog>
   );
 };
 
