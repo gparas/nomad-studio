@@ -20,6 +20,7 @@ const CloseDialog = ({ onClick }) => {
           duration: 0.64,
           delay: 0.4,
         }}
+        key={'closeDialog'}
       >
         <Toolbar>
           <IconButton

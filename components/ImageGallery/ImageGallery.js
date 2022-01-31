@@ -29,7 +29,12 @@ const ImageGallery = ({ images }) => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <Image src={image.src} layout="fill" objectFit="cover" />
+            <Image
+              src={image.src}
+              alt="image-gallery"
+              layout="fill"
+              objectFit="cover"
+            />
           </SwiperSlide>
         ))}
       </Swiper>

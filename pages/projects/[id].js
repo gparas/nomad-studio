@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Dialog from '@mui/material/Dialog';
 import server from '../../lib/server';
@@ -17,7 +17,7 @@ const Project = ({ data }) => {
       key={data.id}
       open
       scroll="body"
-      TransitionComponent={Fragment}
+      transitionDuration={0}
       PaperProps={{
         component: 'article',
       }}

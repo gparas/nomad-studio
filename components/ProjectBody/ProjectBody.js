@@ -63,6 +63,7 @@ const ProjectBody = ({ data }) => {
                     />
                     <Image
                       src={src}
+                      alt={data.title}
                       layout="fill"
                       objectFit="cover"
                       blurDataURL={data.featured_media.blurDataURL}
