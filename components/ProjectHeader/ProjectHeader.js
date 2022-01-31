@@ -1,14 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Close from './Close';
+import CloseDialog from '../CloseDialog';
 
 const ProjectHeader = ({ data }) => {
+  const router = useRouter();
   return (
     <AnimatePresence>
-      <Close />
+      <CloseDialog
+        onClick={() => router.push('/projects', '', { scroll: false })}
+      />
       <motion.section
         layoutId={`featured-media-${data.id}`}
         style={{

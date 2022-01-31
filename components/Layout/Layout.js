@@ -1,4 +1,5 @@
 import { useCycle, AnimateSharedLayout } from 'framer-motion';
+import Toolbar from '@mui/material/Toolbar';
 import Header from '../Header';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
           overflowX: 'hidden',
         }}
       >
+        <Toolbar />
         {children}
       </main>
       <Footer />

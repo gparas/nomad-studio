@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Remaining from './Remaining';
+import Gallery from './Gallery';
 
 const variants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -18,6 +19,16 @@ const variants = {
 };
 
 const ProjectBody = ({ data }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const content = data.content;
   const size = 4;
   const remaining = Object.keys(content).slice(size).length;
@@ -48,6 +59,7 @@ const ProjectBody = ({ data }) => {
                     <Remaining
                       remaining={remaining}
                       lastItem={lastItem === key}
+                      onClick={handleOpen}
                     />
                     <Image
                       src={src}
@@ -62,6 +74,11 @@ const ProjectBody = ({ data }) => {
             })}
         </Grid>
       </Container>
+      <Gallery
+        open={open}
+        onClose={handleClose}
+        images={Object.values(content)}
+      />
     </Box>
   );
 };
